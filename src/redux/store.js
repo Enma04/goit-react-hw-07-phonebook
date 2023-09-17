@@ -1,7 +1,6 @@
 import { createStore } from "redux";
+import { devToolsEnhancer } from "@redux-devtools/extension";
 
-// El valor inicial del estado de Redux para el reducer raíz,
-// si no se le pasa el parámetro preloadedState.
 const initialState = {
   tasks: [
     { id: 0, text: "Learn HTML and CSS", completed: true },
@@ -15,10 +14,11 @@ const initialState = {
   },
 };
 
-// Por ahora, utilizamos un reduser que
-// sólo devuelve el estado recibido.
 const rootReducer = (state = initialState, action) => {
   return state;
 };
 
-export const store = createStore(rootReducer);
+// Crear una extensión del store para añadir las herramientas de desarrollador.
+const enhancer = devToolsEnhancer();
+
+export const store = createStore(rootReducer, enhancer);
