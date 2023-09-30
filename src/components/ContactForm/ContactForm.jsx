@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import css from '../App.module.css';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 
 export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
+  console.log("Uso de selectores:", useSelector(state => state.contacts));
 
   const handleChange = evt => {
     const {name, value} = evt.target;

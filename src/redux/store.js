@@ -1,12 +1,11 @@
 //import { createStore } from "redux";
 //import { devToolsEnhancer } from "@redux-devtools/extension";
 import { configureStore } from "@reduxjs/toolkit";
-import { contactsReducer } from "./reducer";
+import { contactsReducer } from "./contactsSlice";
 
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
-    
   }
 });
 
