@@ -3,14 +3,15 @@ import css from '../App.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
-//import { useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
+  let con = useSelector(state => state.contacts);
   const dispatch = useDispatch();
-  console.log("Uso de selectores:", useSelector(state => state.contacts));
+  //console.log("Contactos despues de agregar:", useSelector(state => state.contacts));
 
   const handleChange = evt => {
     const {name, value} = evt.target;
@@ -25,8 +26,8 @@ export const ContactForm = ({ handleSubmit }) => {
 
   function OnSubmit(evt) {
     evt.preventDefault();
-    dispatch(addContact({ name, number }));
-    console.log("Contactos despues de agregar:", useSelector(state => state.contacts));
+    const id = "id-" + (con.length + 1) + "-" + nanoid(2);
+    dispatch(addContact({ id, name, number }));
     //handleSubmit({ name, number });
     handleReset(evt);
   }

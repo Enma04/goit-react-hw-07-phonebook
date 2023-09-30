@@ -1,4 +1,5 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
 const contactsInitialState = JSON.parse( localStorage.getItem("contacts")) !== null ? 
   [ ...JSON.parse( localStorage.getItem("contacts") ) ] : [];
@@ -11,11 +12,12 @@ export const contactsSlice = createSlice({
     addContact: {
       reducer(state, action) {
         state.push(action.payload);
+        //setContacts( [...contacts, {id, name, number}] );
       },
-      prepare({name, number}) {
+      prepare({id, name, number}) {
         return {
           payload: {
-            id: nanoid(),
+            id,
             name,
             number,
           },
