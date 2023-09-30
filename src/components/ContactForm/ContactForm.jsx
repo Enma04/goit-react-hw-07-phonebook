@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import css from '../App.module.css';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 
 
 export const ContactForm = ({ handleSubmit }) => {
