@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import css from '../App.module.css';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 //import { useSelector } from 'react-redux';
-
 
 export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-  //console.log("Uso de selectores:", useSelector(state => state.contacts));
+  const dispatch = useDispatch();
+  console.log("Uso de selectores:", useSelector(state => state.contacts));
 
   const handleChange = evt => {
     const {name, value} = evt.target;
@@ -23,7 +25,9 @@ export const ContactForm = ({ handleSubmit }) => {
 
   function OnSubmit(evt) {
     evt.preventDefault();
-    handleSubmit({ name, number });
+    dispatch(addContact({ name, number }));
+    console.log("Contactos despues de agregar:", useSelector(state => state.contacts));
+    //handleSubmit({ name, number });
     handleReset(evt);
   }
 

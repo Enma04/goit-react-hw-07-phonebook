@@ -7,15 +7,17 @@ export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
   reducers: {
+    //Reducer add donde el payload es mas que solo texto
     addContact: {
       reducer(state, action) {
-        state = [...state, action.payload];
+        state.push(action.payload);
       },
-      prepare(text) {
+      prepare({name, number}) {
         return {
           payload: {
-            text,
             id: nanoid(),
+            name,
+            number,
           },
         };
       },
@@ -24,7 +26,7 @@ export const contactsSlice = createSlice({
       const index = state.findIndex(task => task.id === action.payload);
       state.splice(index, 1);
     },
-  },
+  }
 });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
