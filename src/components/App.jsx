@@ -68,7 +68,7 @@ export const App = () => {
       />
       <Filter handleFilter={handleFilter} />
       <ContactsList
-        contacts={handleContacts()}
+        oldContacts={handleContacts()}
         handleDelete={handleDelete}
       />
     </div>

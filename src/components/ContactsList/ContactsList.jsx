@@ -1,8 +1,10 @@
 import React from "react";
 import css from '../App.module.css';
 import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
 
-export const ContactsList = ({ contacts, handleDelete }) => {
+export const ContactsList = ({ oldContacts, handleDelete }) => {
+  let contacts = useSelector(state => state.contacts);
   return(
     <ul className={css.contactList}>
       {contacts.length !== 0 &&

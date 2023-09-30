@@ -8,7 +8,7 @@ export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-  console.log("Uso de selectores:", useSelector(state => state.contacts));
+  //console.log("Uso de selectores:", useSelector(state => state.contacts));
 
   const handleChange = evt => {
     const {name, value} = evt.target;
