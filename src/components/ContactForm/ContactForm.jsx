@@ -9,7 +9,7 @@ export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-  let con = useSelector(state => state.contacts);
+  let con = useSelector(state => state.contacts.list);
   const dispatch = useDispatch();
   //console.log("Contactos despues de agregar:", useSelector(state => state.contacts));
 
