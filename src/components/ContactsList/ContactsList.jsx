@@ -4,8 +4,21 @@ import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 
 export const ContactsList = ({ oldContacts, handleDelete }) => {
-  let contacts = useSelector(state => state.contacts.list);
+  let filtro = useSelector(state => state.filter.value);
+  let list = useSelector(state => state.contacts.list);
+  let contacts = [];
+
+  if( filtro !== '' ) {
+    contacts = list.filter(item => item.name.toLowerCase()
+                   .includes(filtro.toLowerCase()));
+  }
+  else {
+    contacts = list;
+  }
+
   console.log("contacts: ", contacts);
+  console.log("Filtro: ", filtro);
+
   return(
     <ul className={css.contactList}>
       {contacts.length !== 0 &&
