@@ -8,7 +8,6 @@ import { ContactsList } from './ContactsList/ContactsList';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState("");
 
   //------------------------------------------------------------------------
   //------------------- METODOS
@@ -31,18 +30,6 @@ export const App = () => {
     const id = "id-" + contacts.length + "-" + nanoid(2);
     setContacts( [...contacts, {id, name, number}] );
   };
-
-  const handleFilter = (filter) => { 
-    setFilter( filter );
-    if( filter !== "" ) handleContacts();
-  }
-
-  const handleContacts = () => {
-    if(filter === '') return contacts;
-    return contacts.filter(item =>
-      item.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
 
   //------------------------------------------------------------------------
   //------------------- USE EFFECT
@@ -68,7 +55,6 @@ export const App = () => {
       />
       <Filter />
       <ContactsList
-        oldContacts={handleContacts()}
         handleDelete={handleDelete}
       />
     </div>
