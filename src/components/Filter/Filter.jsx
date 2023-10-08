@@ -1,17 +1,12 @@
 import css from '../App.module.css';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
 
-export const Filter = ({ handleFilter }) => {
-  //let filterValue = useSelector(state => state.filter);
+export const Filter = () => {
   let dispatch = useDispatch();
-
-  //console.log("Filtro: ", filterValue);
 
   const changeFilter = (e) => {
     dispatch(setFilter(e.target.value));
-    //handleFilter(e.target.value);
   }
 
   return (
@@ -27,7 +22,3 @@ export const Filter = ({ handleFilter }) => {
     </>
   );
 }
-
-Filter.propTypes = {
-  handleFilter: PropTypes.func,
-};

@@ -66,7 +66,7 @@ export const App = () => {
       <ContactForm
         handleSubmit={handleSubmit}
       />
-      <Filter handleFilter={handleFilter} />
+      <Filter />
       <ContactsList
         oldContacts={handleContacts()}
         handleDelete={handleDelete}
