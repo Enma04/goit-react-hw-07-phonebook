@@ -3,12 +3,18 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
 
 export const Filter = () => {
+  //-----------------------------------------
+  //--------------- VARIABLES
   let dispatch = useDispatch();
 
+  //-----------------------------------------
+  //--------------- METHODS
   const changeFilter = (e) => {
     dispatch(setFilter(e.target.value));
   }
 
+  //-----------------------------------------
+  //--------------- COMPONENT
   return (
     <>
       <h3 className={css.contactsH3}>Contacts</h3>

@@ -1,11 +1,10 @@
 import React from "react";
 import css from '../App.module.css';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from "react-redux";
 import { deleteContact } from "redux/contactsSlice";
 import Swal from "sweetalert2";
 
-export const ContactsList = ({ oldContacts, handleDelete }) => {
+export const ContactsList = () => {
   let filtro = useSelector(state => state.filter.value);
   let list = useSelector(state => state.contacts.list);
   let contacts = [];
@@ -18,9 +17,6 @@ export const ContactsList = ({ oldContacts, handleDelete }) => {
   else {
     contacts = list;
   }
-
-  //console.log("contacts: ", contacts);
-  //console.log("Filtro: ", filtro);
 
   const onDelete = (id, name) => {
     dispatch( deleteContact(id) );
@@ -39,8 +35,3 @@ export const ContactsList = ({ oldContacts, handleDelete }) => {
     </ul>
   );
 }
-
-ContactsList.propTypes = {
-  handleDelete: PropTypes.func,
-  contacts: PropTypes.array,
-};

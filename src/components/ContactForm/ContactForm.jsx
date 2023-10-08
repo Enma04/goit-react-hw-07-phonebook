@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import css from '../App.module.css';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { nanoid } from 'nanoid';
+import Swal from 'sweetalert2';
 
-export const ContactForm = ({ handleSubmit }) => {
+export const ContactForm = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-
-  let con = useSelector(state => state.contacts.list);
   const dispatch = useDispatch();
-  //console.log("Contactos despues de agregar:", useSelector(state => state.contacts));
-
+  let con = useSelector(state => state.contacts.list);
+  
   const handleChange = evt => {
     const {name, value} = evt.target;
     if(name === "name") setName(value);
@@ -27,8 +25,17 @@ export const ContactForm = ({ handleSubmit }) => {
   function OnSubmit(evt) {
     evt.preventDefault();
     const id = "id-" + (con.length + 1) + "-" + nanoid(2);
+
+    if (con.map(item => item.name).includes(name)) {
+      Swal.fire('El contacto ya existe!');
+      return
+    }
+    else if (con.map(item => item.number).includes(number)) {
+      Swal.fire('Este numero ya esta agregado!');
+      return
+    }
+
     dispatch(addContact({ id, name, number }));
-    //handleSubmit({ name, number });
     handleReset(evt);
   }
 
@@ -68,7 +75,3 @@ export const ContactForm = ({ handleSubmit }) => {
       </form>
     );
 }
-
-ContactForm.propTypes = {
-  handleSubmit: PropTypes.func,
-};
