@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 export const ContactsList = () => {
   //-----------------------------------------
   //--------------- VARIABLES
-  let filtro = useSelector(state => state.filter.value);
-  let list = useSelector(state => state.contacts.list);
+  let filtro = useSelector(state => state.contacts.filter);
+  let list = useSelector(state => state.contacts.contacts);
   let contacts = list;
   let dispatch = useDispatch();
 

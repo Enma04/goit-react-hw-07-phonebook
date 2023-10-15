@@ -11,7 +11,7 @@ export const ContactForm = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
-  let con = useSelector(state => state.contacts.list);
+  let con = useSelector(state => state.contacts.contacts);
   
   //-----------------------------------------
   //--------------- METHODS

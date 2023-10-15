@@ -5,20 +5,27 @@ const initialContacts = JSON.parse( localStorage.getItem("contacts")) !== null ?
 
 export const contactsSlice = createSlice({
   name: 'contacts',
+
   initialState: {
-    list: initialContacts,
+    contacts: initialContacts,
+    filter: '',
   },
+
   reducers: {
     //Reducer add donde el payload es mas que solo texto
     addContact(state, action) {
-      state.list = [...state.list, action.payload];
+      state.contacts = [...state.contacts, action.payload];
     },
 
     deleteContact(state, action) {
-      state.list = [ ...state.list.filter( item => item.id !== action.payload )];
+      state.contacts = [ ...state.contacts.filter( item => item.id !== action.payload )];
+    },
+
+    setFilter(state, action) {
+      state.value = action.payload;
     },
   }
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const { addContact, deleteContact } = contactsSlice.actions;
+export const { addContact, deleteContact, setFilter } = contactsSlice.actions;
