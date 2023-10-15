@@ -1,13 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialContacts = JSON.parse( localStorage.getItem("contacts")) !== null ? 
-  [ ...JSON.parse( localStorage.getItem("contacts") ) ] : [];
-
 export const contactsSlice = createSlice({
   name: 'contacts',
 
   initialState: {
-    contacts: initialContacts,
+    contacts: [],
     filter: '',
   },
 
@@ -22,7 +19,7 @@ export const contactsSlice = createSlice({
     },
 
     setFilter(state, action) {
-      state.value = action.payload;
+      state.filter = action.payload;
     },
   }
 });
